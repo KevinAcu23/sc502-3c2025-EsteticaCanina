@@ -57,6 +57,7 @@
       <a href="#" class="text-decoration-none" style="color: #4b2e83;">WhatsApp</a>
     </div>
     <p class="mt-3 mb-0 small">© 2025 Estética Canina y Spa Guapos. Todos los derechos reservados.</p>
+    
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

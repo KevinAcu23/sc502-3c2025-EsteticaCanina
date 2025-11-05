@@ -19,7 +19,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Citas</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="Citas.php" style="color: #4b2e83;">Citas</a></li>
           <li class="nav-item"><a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a></li>
           <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a></li>
         </ul>
@@ -41,7 +41,7 @@
       <div class="p-4 rounded-4 shadow-lg mx-auto" style="max-width: 600px; background-color: rgba(255, 250, 247, 0.8);">
         <h1 class="fw-bold" style="color: #4b2e83;">¡Porque tu peludo merece lo mejor!</h1>
         <p class="lead mt-2" style="color: #503a76;">Baños, cortes y cuidados con amor 🐕✨</p>
-        <a href="#" class="btn fw-bold rounded-pill px-4 py-2 mt-3" style="background-color: #ffb6c1; color: #4b2e83;">
+        <a href="Citas.php" class="btn fw-bold rounded-pill px-4 py-2 mt-3" style="background-color: #ffb6c1; color: #4b2e83;">
           Agendar Cita
         </a>
       </div>

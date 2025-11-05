@@ -9,7 +9,7 @@
 
 <body style="background-color: #fffaf7;">
 
-  <!-- NAVBAR -->
+
   <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 182, 193, 0.9);">
     <div class="container-fluid px-4">
       <a class="navbar-brand fw-bold" href="index.php" style="color: #4b2e83;">
@@ -28,15 +28,15 @@
     </div>
   </nav>
 
-  <!-- PRODUCTS SECTION -->
+
   <section class="py-5 mt-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-4" style="color: #4b2e83;">Nuestros Productos</h2>
       <div class="row g-4">
-        <!-- Product 1 -->
+      
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Shampoo+Canino" class="card-img-top" alt="Shampoo Canino">
+            <img src="https://molerpa.com/wp-content/uploads/2019/08/PAD-01-100ml-1024x1024.jpg" class="card-img-top" alt="Shampoo Canino">
             <div class="card-body">
               <h5 class="card-title">Shampoo Canino Hidratante</h5>
               <p class="card-text">Shampoo especial para perros con piel sensible, hidrata y deja el pelaje suave y brillante.</p>
@@ -44,10 +44,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 2 -->
+       
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Cepillo+para+Perros" class="card-img-top" alt="Cepillo para Perros">
+            <img src="https://i.ebayimg.com/images/g/lqkAAeSwSs5oFEPW/s-l1600.webp" class="card-img-top" alt="Cepillo para Perros">
             <div class="card-body">
               <h5 class="card-title">Cepillo Desenredante</h5>
               <p class="card-text">Cepillo ideal para desenredar el pelaje de tu perro sin causar dolor, perfecto para razas de pelo largo.</p>
@@ -55,10 +55,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 3 -->
+       
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Juguete+Masticable" class="card-img-top" alt="Juguete Masticable">
+            <img src="https://i.ebayimg.com/images/g/Fl8AAOSwe4hluFBh/s-l1600.webp" class="card-img-top" alt="Juguete Masticable">
             <div class="card-body">
               <h5 class="card-title">Juguete Masticable de Goma</h5>
               <p class="card-text">Juguete resistente para perros que aman masticar, ayuda a mantener sus dientes limpios.</p>
@@ -66,10 +66,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 4 -->
+    
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Collar+Antipulgas" class="card-img-top" alt="Collar Antipulgas">
+            <img src="https://i5.walmartimages.com.mx/gr/images/product-images/img_large/00750155649613L.jpg" class="card-img-top" alt="Collar Antipulgas">
             <div class="card-body">
               <h5 class="card-title">Collar Antipulgas</h5>
               <p class="card-text">Collar efectivo contra pulgas y garrapatas, protege a tu perro durante meses.</p>
@@ -77,10 +77,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 5 -->
+     
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Comida+Premium" class="card-img-top" alt="Comida Premium">
+            <img src="https://static.wixstatic.com/media/15c2e0_d41a6e39823f44d4b64eca99cc879f36~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/15c2e0_d41a6e39823f44d4b64eca99cc879f36~mv2.jpg" class="card-img-top" alt="Comida Premium">
             <div class="card-body">
               <h5 class="card-title">Comida Premium para Perros</h5>
               <p class="card-text">Alimento balanceado con ingredientes naturales, ideal para una dieta saludable.</p>
@@ -88,10 +88,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 6 -->
+        
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Cama+para+Perros" class="card-img-top" alt="Cama para Perros">
+            <img src="https://m.media-amazon.com/images/I/71Glb77vr1L._AC_SL1500_.jpg" class="card-img-top" alt="Cama para Perros">
             <div class="card-body">
               <h5 class="card-title">Cama Ortodónica para Perros</h5>
               <p class="card-text">Cama cómoda y ergonómica que apoya las articulaciones de tu perro.</p>
@@ -99,10 +99,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 7 -->
+ 
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Champu+Seco" class="card-img-top" alt="Champú Seco">
+            <img src="https://mascotasgo.com/wp-content/uploads/2024/07/Plantilla-productos-web-700x800-F.pptx8_-1.jpg" class="card-img-top" alt="Champú Seco">
             <div class="card-body">
               <h5 class="card-title">Champú Seco Refrescante</h5>
               <p class="card-text">Champú en polvo para baños rápidos, deja el pelaje fresco y con buen olor.</p>
@@ -110,10 +110,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 8 -->
+    
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Peine+para+Pelo" class="card-img-top" alt="Peine para Pelo">
+            <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/f17da4a2-fe98-4885-af5f-ae137f1c4029.5240aaa2a859636f3d1eb6b0fa59261d.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" class="card-img-top" alt="Peine para Pelo">
             <div class="card-body">
               <h5 class="card-title">Peine de Acero Inoxidable</h5>
               <p class="card-text">Peine duradero para eliminar nudos y mantener el pelaje ordenado.</p>
@@ -121,10 +121,10 @@
             </div>
           </div>
         </div>
-        <!-- Product 9 -->
+        
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Snacks+Naturales" class="card-img-top" alt="Snacks Naturales">
+            <img src="https://mascoboutique.com/16850-superlarge_default/raw-treats-snacks-pechuga-de-pollo.jpg" class="card-img-top" alt="Snacks Naturales">
             <div class="card-body">
               <h5 class="card-title">Snacks Naturales de Pollo</h5>
               <p class="card-text">Premios saludables hechos con pollo deshidratado, perfectos para entrenamientos.</p>
@@ -132,20 +132,6 @@
             </div>
           </div>
         </div>
-        <!-- Product 10 -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://via.placeholder.com/300x200?text=Arnés+Reforzado" class="card-img-top" alt="Arnés Reforzado">
-            <div class="card-body">
-              <h5 class="card-title">Arnés Reforzado para Paseos</h5>
-              <p class="card-text">Arnés cómodo y resistente, ideal para perros activos y paseos diarios.</p>
-              <p class="fw-bold" style="color: #4b2e83;">₡9,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <footer class="text-center py-4" style="background-color: #ffeef3; color: #4b2e83;">

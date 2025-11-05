@@ -9,7 +9,6 @@
 
 <body style="background-color: #fffaf7;">
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 182, 193, 0.9);">
     <div class="container-fluid px-4">
       <a class="navbar-brand fw-bold" href="#" style="color: #4b2e83;">
@@ -21,14 +20,14 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Citas</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Productos</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a></li>
           <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+ 
   <section
     class="position-relative min-vh-100 d-flex align-items-center justify-content-center text-center"
     style="
@@ -49,7 +48,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="text-center py-4" style="background-color: #ffeef3; color: #4b2e83;">
     <p class="mb-1 fw-semibold">🐩 Síguenos en redes</p>
     <div class="d-flex justify-content-center gap-3">

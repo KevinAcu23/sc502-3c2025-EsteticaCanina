@@ -20,6 +20,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Citas</a></li>
           <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Productos</a></li>
           <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a></li>
         </ul>

@@ -30,13 +30,6 @@
 
 
 
-
-
-
-
-
-
-
 <footer class="text-center py-4" style="background-color: #ffeef3; color: #4b2e83;">
     <p class="mb-1 fw-semibold">🐩 Síguenos en redes</p>
     <div class="d-flex justify-content-center gap-3">

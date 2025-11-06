@@ -28,7 +28,7 @@
   </nav>
 
   <div class="container" style="margin-top: 120px;">
-    <h2 class="fw-bold text-center mb-4" style="color: #4b2e83;">🛒 Tu Carrito de Compras</h2>
+    <h2 class="fw-bold text-center mb-4" style="color: #4b2e83;">🛒 Carrito de Compras</h2>
 
     <div class="table-responsive">
       <table class="table table-bordered align-middle text-center">

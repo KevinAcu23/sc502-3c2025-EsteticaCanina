@@ -2,7 +2,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'encuestaApp');
+define('DB_NAME', 'EsteticaCanina');
 
 function getPDOConnection() {
     try {

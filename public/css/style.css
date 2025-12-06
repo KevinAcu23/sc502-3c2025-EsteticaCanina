@@ -1,0 +1,109 @@
+/* ===== Estilos para el LOGIN y REGISTRO===== */
+
+.login-body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ffe3f0 0%, #fffaf7 35%, #e9e4ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+.login-card {
+    max-width: 520px;          
+    width: 100%;
+    background-color: rgba(255, 250, 247, 0.98);
+    border-radius: 1.75rem;
+    box-shadow: 0 14px 40px rgba(75, 46, 131, 0.25);
+    border: 1px solid rgba(255, 182, 193, 0.5);
+    overflow: hidden;
+}
+
+.login-header {
+    background: linear-gradient(90deg, #ffb6c1, #ffdde7);
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-icon {
+    font-size: 1.8rem;
+}
+
+.brand-title {
+    margin: 0;
+    font-weight: 800;
+    color: #4b2e83;
+    font-size: 1.1rem;
+    line-height: 1.1;
+}
+
+.brand-subtitle {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #6c4ea3;
+}
+
+.login-body-inner {
+    padding: 2.1rem 2.2rem 1.9rem;  
+}
+
+.login-title {
+    font-weight: 700;
+    color: #4b2e83;
+    margin-bottom: 0.4rem;
+    font-size: 1.25rem;
+}
+.login-text {
+    font-size: 0.9rem;
+    color: #6c4ea3;
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #4b2e83;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    border-radius: 0.75rem;
+    border-color: rgba(75, 46, 131, 0.15);
+}
+
+.form-control:focus {
+    border-color: #ffb6c1;
+    box-shadow: 0 0 0 0.2rem rgba(255, 182, 193, 0.35);
+}
+
+.btn-login {
+    background-color: #ffb6c1;
+    color: #4b2e83;
+    font-weight: 700;
+    border-radius: 999px;
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: #ff9fb1;
+    color: #4b2e83;
+}
+
+.small-link {
+    font-size: 0.85rem;
+}
+
+.small-link a {
+    color: #4b2e83;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.small-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Fin estilos login y registro ===== */

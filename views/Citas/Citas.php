@@ -9,7 +9,7 @@
 
 <body style="background-color: #fffaf7;">
 
-  <!-- NAVBAR -->
+
   <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 182, 193, 0.9);">
     <div class="container-fluid px-4">
       <a class="navbar-brand fw-bold" href="index.php" style="color: #4b2e83;">
@@ -28,7 +28,7 @@
     </div>
   </nav>
 
-  <!-- CONTENIDO -->
+
   <section class="py-5 mt-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-4" style="color: #4b2e83;">Agenda tu Cita</h2>
@@ -36,7 +36,6 @@
 
       <div class="row g-4">
 
-        <!-- Servicio 1 -->
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2017/08/07/17/34/dog-2606759_1280.jpg" class="card-img-top" alt="Baño Canino">
@@ -60,7 +59,7 @@
           </div>
         </div>
 
-        <!-- Servicio 2 -->
+        
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2017/02/16/19/22/dog-2071180_1280.jpg" class="card-img-top" alt="Corte de Pelo">
@@ -84,7 +83,7 @@
           </div>
         </div>
 
-        <!-- Servicio 3 -->
+    
         <div class="col-md-4">
           <div class="card h-100 shadow-sm">
             <img src="https://cdn.pixabay.com/photo/2021/04/02/16/29/dog-6145222_1280.jpg" class="card-img-top" alt="Grooming Completo">
@@ -112,7 +111,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  
   <footer class="text-center py-4" style="background-color: #ffeef3; color: #4b2e83;">
     <p class="mb-1 fw-semibold">🐩 Síguenos en redes</p>
     <div class="d-flex justify-content-center gap-3">

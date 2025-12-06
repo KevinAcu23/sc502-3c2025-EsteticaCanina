@@ -14,20 +14,36 @@
       <a class="navbar-brand fw-bold" href="#" style="color: #4b2e83;">
         🐾 Estética Canina y Spa Guapos
       </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link fw-semibold" href="Citas.php" style="color: #4b2e83;">Citas</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a></li>
-          <li class="nav-item"><a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a></li>
+        <ul class="navbar-nav align-items-center">
+
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Citas.php" style="color: #4b2e83;">Citas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a>
+          </li>
+
+      
+         
+          <li class="nav-item ms-3">
+            <a href="?url=auth/logout" class="btn btn-sm btn-outline-light fw-semibold">
+              Cerrar sesión
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
- 
   <section
     class="position-relative min-vh-100 d-flex align-items-center justify-content-center text-center"
     style="
@@ -38,10 +54,13 @@
     "
   >
     <div class="container px-4 position-relative">
-      <div class="p-4 rounded-4 shadow-lg mx-auto" style="max-width: 600px; background-color: rgba(255, 250, 247, 0.8);">
+      <div class="p-4 rounded-4 shadow-lg mx-auto"
+           style="max-width: 600px; background-color: rgba(255, 250, 247, 0.8);">
         <h1 class="fw-bold" style="color: #4b2e83;">¡Porque tu peludo merece lo mejor!</h1>
         <p class="lead mt-2" style="color: #503a76;">Baños, cortes y cuidados con amor 🐕✨</p>
-        <a href="Citas.php" class="btn fw-bold rounded-pill px-4 py-2 mt-3" style="background-color: #ffb6c1; color: #4b2e83;">
+        <a href="Citas.php"
+           class="btn fw-bold rounded-pill px-4 py-2 mt-3"
+           style="background-color: #ffb6c1; color: #4b2e83;">
           Agendar Cita
         </a>
       </div>
@@ -55,8 +74,9 @@
       <a href="#" class="text-decoration-none" style="color: #4b2e83;">Instagram</a>
       <a href="#" class="text-decoration-none" style="color: #4b2e83;">WhatsApp</a>
     </div>
-    <p class="mt-3 mb-0 small">© 2025 Estética Canina y Spa Guapos. Todos los derechos reservados.</p>
-    
+    <p class="mt-3 mb-0 small">
+      © 2025 Estética Canina y Spa Guapos. Todos los derechos reservados.
+    </p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

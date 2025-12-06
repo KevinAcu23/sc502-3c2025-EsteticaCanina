@@ -1,3 +1,9 @@
+<?php
+// Asegurarnos de que la sesión esté iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +17,7 @@
 
   <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 182, 193, 0.9);">
     <div class="container-fluid px-4">
-      <a class="navbar-brand fw-bold" href="#" style="color: #4b2e83;">
+      <a class="navbar-brand fw-bold" href="?url=home/index" style="color: #4b2e83;">
         🐾 Estética Canina y Spa Guapos
       </a>
 
@@ -22,23 +28,43 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav align-items-center">
 
+          <!-- Mis Citas (lista de citas del usuario) -->
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Citas.php" style="color: #4b2e83;">Citas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a>
+            <a class="nav-link fw-semibold" href="?url=citas/misCitas" style="color: #4b2e83;">
+              Mis Citas
+            </a>
           </li>
 
-      
-         
+          <!-- Productos -->
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">
+              Productos
+            </a>
+          </li>
+
+          <!-- Carrito -->
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="Carrito.php" style="color: #4b2e83;">
+              Carrito
+            </a>
+          </li>
+
+          <!-- Hola, Usuario -->
+          <?php if (isset($_SESSION['user_name'])): ?>
+            <li class="nav-item ms-3">
+              <span class="navbar-text fw-semibold" style="color: #4b2e83;">
+                Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+              </span>
+            </li>
+          <?php endif; ?>
+
+          <!-- Logout -->
           <li class="nav-item ms-3">
             <a href="?url=auth/logout" class="btn btn-sm btn-outline-light fw-semibold">
               Cerrar sesión
             </a>
           </li>
+
         </ul>
       </div>
     </div>
@@ -58,7 +84,9 @@
            style="max-width: 600px; background-color: rgba(255, 250, 247, 0.8);">
         <h1 class="fw-bold" style="color: #4b2e83;">¡Porque tu peludo merece lo mejor!</h1>
         <p class="lead mt-2" style="color: #503a76;">Baños, cortes y cuidados con amor 🐕✨</p>
-        <a href="Citas.php"
+
+        <!-- Botón: va a la página para AGENDAR (citas/index) -->
+        <a href="?url=citas/index"
            class="btn fw-bold rounded-pill px-4 py-2 mt-3"
            style="background-color: #ffb6c1; color: #4b2e83;">
           Agendar Cita

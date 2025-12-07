@@ -36,11 +36,10 @@ if (session_status() === PHP_SESSION_NONE) {
           </li>
 
           <!-- Productos -->
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">
-              Productos
+          <li class="nav-item"><a class="nav-link fw-semibold"href="index.php?url=productos/index"style="color: #4b2e83;">
+               Productos
             </a>
-          </li>
+           </li>
 
           <!-- Carrito -->
           <li class="nav-item">

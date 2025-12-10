@@ -32,12 +32,24 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
         <ul class="navbar-nav align-items-center">
 
           <!-- Mis Citas (lista de citas del usuario) -->
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="?url=citas/misCitas" style="color: #4b2e83;">
-              Mis Citas
-            </a>
-          </li>
 
+          <?php if ($esAdmin): ?>
+             <li class="nav-item">
+             <a class="nav-link fw-semibold"
+               href="index.php?url=citas/misCitas"
+                 style="color: #4b2e83;">
+                 Agenda
+                </a>
+                 </li>
+               <?php else: ?>
+            <li class="nav-item">
+             <a class="nav-link fw-semibold"
+          href="index.php?url=citas/misCitas"
+            style="color: #4b2e83;">
+              Mis Citas
+             </a>
+            </li>
+                <?php endif; ?>
           <!-- Productos -->
           <li class="nav-item"><a class="nav-link fw-semibold"href="index.php?url=productos/index"style="color: #4b2e83;">
                Productos
@@ -45,11 +57,19 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
            </li>
 
           <!-- Carrito -->
+          <?php if ($esAdmin): ?>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Carrito.php" style="color: #4b2e83;">
-              Carrito
-            </a>
-          </li>
+             <a class="nav-link fw-semibold" href="index.php?url=pedidos/admin" style="color: #4b2e83;">
+              Pedidos
+          </a>
+        </li>
+        <?php else: ?>
+      <li class="nav-item">
+       <a class="nav-link fw-semibold" href="index.php?url=carrito/index" style="color: #4b2e83;">
+            Carrito
+          </a>
+        </li>
+         <?php endif; ?>
 
           <!-- Hola, Usuario -->
           <?php if (isset($_SESSION['user_name'])): ?>

@@ -6,7 +6,7 @@ class CitasController
 {
     public function __construct()
     {
-        // Asegurarnos de que la sesión esté iniciada
+       
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

@@ -26,15 +26,45 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
+
+                    <!-- Mis Citas / Agenda segun rol -->
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="?url=citas/misCitas" style="color: #4b2e83;">Mis Citas</a>
+                        <a class="nav-link fw-semibold"
+                           href="index.php?url=citas/misCitas"
+                           style="color: #4b2e83;">
+                            <?php echo $esAdmin ? 'Agenda' : 'Mis Citas'; ?>
+                        </a>
                     </li>
+
+                    <!-- Productos -->
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="index.php?url=productos/index" style="color: #4b2e83;">Productos</a>
+                        <a class="nav-link fw-semibold"
+                           href="index.php?url=productos/index"
+                           style="color: #4b2e83;">
+                            Productos
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="#" style="color: #4b2e83;">Carrito</a>
-                    </li>
+
+                    <!-- Pedidos (admin) / Carrito (cliente) -->
+                    <?php if ($esAdmin): ?>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
+                               href="index.php?url=pedidos/admin"
+                               style="color: #4b2e83;">
+                                Pedidos
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
+                               href="index.php?url=carrito/index"
+                               style="color: #4b2e83;">
+                                Carrito
+                            </a>
+                        </li>
+                    <?php endif; ?>
+
+                    <!-- Hola, usuario -->
                     <?php if (isset($_SESSION['user_name'])): ?>
                         <li class="nav-item ms-3">
                             <span class="navbar-text fw-semibold" style="color: #4b2e83;">
@@ -42,8 +72,11 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
                             </span>
                         </li>
                     <?php endif; ?>
+
                     <li class="nav-item ms-3">
-                        <a href="?url=auth/logout" class="btn btn-sm btn-outline-light fw-semibold">Cerrar sesión</a>
+                        <a href="?url=auth/logout" class="btn btn-sm btn-outline-light fw-semibold">
+                            Cerrar sesión
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -60,7 +93,9 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
 
             <div class="d-flex justify-content-start mb-4">
                 <?php if (!$esAdmin): ?>
-                    <a href="?url=citas/index" class="btn fw-semibold" style="background-color:#4b2e83; color:#fff;">Agendar una nueva cita</a>
+                    <a href="?url=citas/index" class="btn fw-semibold" style="background-color:#4b2e83; color:#fff;">
+                        Agendar una nueva cita
+                    </a>
                 <?php endif; ?>
             </div>
 
@@ -134,7 +169,7 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
                                                 </span>
                                             </td>
                                             <td>
-                                                <span class="fw-semibold"><?php echo $fechaFmt; ?></span><br>
+                                                <span class="fw-semibold"><?php echo $fechaFmt; ?></span>
                                             </td>
                                             <td class="fw-semibold">
                                                 <?php echo $horaFmt; ?>
@@ -232,66 +267,7 @@ $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const botones = document.querySelectorAll('.btn-cancelar-cita');
-
-        botones.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const citaId = this.dataset.citaId;
-                const cardRow = document.getElementById('cita-row-' + citaId) || this.closest('.cita-card');
-
-                Swal.fire({
-                    title: '¿Cancelar esta cita?',
-                    text: 'Esta acción no se puede deshacer.',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Sí, cancelar',
-                    cancelButtonText: 'No, volver',
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#6c757d'
-                }).then((result) => {
-                    if (!result.isConfirmed) return;
-
-                    const formData = new FormData();
-                    formData.append('cita_id', citaId);
-                    formData.append('ajax', '1');
-
-                    fetch('?url=citas/cancelar', {
-                        method: 'POST',
-                        body: formData,
-                        credentials: 'same-origin'
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success) {
-                            if (cardRow) {
-                                cardRow.remove();
-                            }
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Cita cancelada',
-                                text: data.message || 'La cita se canceló correctamente.'
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: data.message || 'No se pudo cancelar la cita. Intenta de nuevo.'
-                            });
-                        }
-                    })
-                    .catch(() => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Ocurrió un problema al cancelar la cita.'
-                        });
-                    });
-                });
-            });
-        });
-    });
-    </script>
+    <!-- JS específico para Mis Citas / Agenda -->
+    <script src="public/js/misCitas.js"></script>
 </body>
 </html>

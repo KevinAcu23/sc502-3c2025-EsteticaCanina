@@ -1,7 +1,6 @@
 <?php
 
-// por si no lo maneja tu autoload, puedes requerirlo a mano:
-// require_once __DIR__ . '/../models/Auth.php';
+
 
 class AuthController
 {
@@ -11,7 +10,7 @@ class AuthController
             session_start();
         }
 
-        // Si ya está logueado y viene por GET → lo mando al home
+       
         if (isset($_SESSION['user_id']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
             header('Location: ?url=home/index');
             exit();

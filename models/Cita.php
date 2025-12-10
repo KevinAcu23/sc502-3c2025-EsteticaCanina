@@ -108,8 +108,7 @@ public function obtenerTodas()
     }
 
     /**
-     * 
-     *
+
      * @param int $citaId
      * @param int|null $usuarioId
      * @return bool

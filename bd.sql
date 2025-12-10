@@ -18,6 +18,11 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+UPDATE usuarios
+SET rol = 'admin'
+WHERE email = 'correo_del_usuario@ejemplo.com';
+
+
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(150) NOT NULL,
@@ -46,6 +51,22 @@ CREATE TABLE `citas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-UPDATE usuarios
-SET rol = 'admin'
-WHERE email = 'correo_del_usuario@ejemplo.com';
+CREATE TABLE pedidos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  total DECIMAL(10,2) NOT NULL,
+  fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE pedido_detalle (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pedido_id INT NOT NULL,
+  producto_id INT NOT NULL,
+  nombre_producto VARCHAR(255) NOT NULL,
+  precio_unitario DECIMAL(10,2) NOT NULL,
+  cantidad INT NOT NULL,
+  subtotal DECIMAL(10,2) NOT NULL,
+  CONSTRAINT fk_pedido_detalle_pedido
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id)
+    ON DELETE CASCADE
+);

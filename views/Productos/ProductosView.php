@@ -5,7 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
 
-// Si el controlador no lo definió, por seguridad:
 $currentPage   = $currentPage   ?? 'productos';
 $mensaje_exito = $mensaje_exito ?? null;
 $error         = $error         ?? null;
@@ -19,13 +18,11 @@ $error         = $error         ?? null;
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
-    /* Todas las imágenes del catálogo con el mismo alto,
-       sin deformarse ni cortarse: se encogen si hace falta */
     .producto-img {
       width: 100%;
-      height: 220px;          /* ajusta este valor si la querés más alta/baja */
-      object-fit: contain;    /* muestra la imagen completa, sin recortar */
-      background-color: #f7f7f7; /* fondo neutro cuando sobren espacios */
+      height: 220px;
+      object-fit: contain;
+      background-color: #f7f7f7;
     }
   </style>
 </head>
@@ -34,7 +31,6 @@ $error         = $error         ?? null;
 
   <?php include __DIR__ . '/../layout/navbar.php'; ?>
 
-  <!-- main para que el footer baje al fondo -->
   <main class="flex-grow-1">
     <section class="py-5 mt-5">
       <div class="container">
@@ -60,9 +56,7 @@ $error         = $error         ?? null;
         <div class="row g-4">
           <?php if (!empty($productos)): ?>
             <?php foreach ($productos as $producto): ?>
-              <?php
-                $precioFmt = number_format($producto['precio'], 0, ',', '.');
-              ?>
+              <?php $precioFmt = number_format($producto['precio'], 0, ',', '.'); ?>
               <div class="col-md-4 producto-card" data-producto-id="<?php echo (int)$producto['id']; ?>">
                 <div class="card h-100 shadow-sm">
                   <img src="<?php echo htmlspecialchars($producto['imagen_url']); ?>"
@@ -80,7 +74,8 @@ $error         = $error         ?? null;
                         <!-- SOLO CLIENTE: Agregar al carrito -->
                         <button class="btn fw-semibold btn-agregar-carrito"
                                 style="background-color:#4b2e83; color:#fff;"
-                                data-producto="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                                data-id="<?php echo (int)$producto['id']; ?>"
+                                data-nombre="<?php echo htmlspecialchars($producto['nombre'], ENT_QUOTES); ?>">
                           Agregar al carrito
                         </button>
                       <?php endif; ?>
@@ -218,126 +213,14 @@ $error         = $error         ?? null;
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <!-- Pasar mensajes PHP a JS -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // SweetAlerts globales desde PHP (crear / error / editar)
-      <?php if (!empty($mensaje_exito)): ?>
-        Swal.fire({
-          icon: 'success',
-          title: 'Listo',
-          html: '<?php echo addslashes($mensaje_exito); ?>',
-          confirmButtonColor: '#4b2e83'
-        });
-      <?php endif; ?>
-
-      <?php if (!empty($error)): ?>
-        Swal.fire({
-          icon: 'error',
-          title: 'Ups...',
-          html: '<?php echo addslashes($error); ?>',
-          confirmButtonColor: '#4b2e83'
-        });
-      <?php endif; ?>
-
-      // Agregar al carrito (solo clientes)
-      const botonesCarrito = document.querySelectorAll('.btn-agregar-carrito');
-      botonesCarrito.forEach(btn => {
-        btn.addEventListener('click', function () {
-          const nombre = this.dataset.producto || 'Producto';
-
-          Swal.fire({
-            icon: 'success',
-            title: 'Agregado al carrito',
-            text: nombre + ' se agregó a tu carrito.',
-            confirmButtonColor: '#4b2e83'
-          });
-        });
-      });
-
-      // Eliminar producto (admin, AJAX)
-      const botonesEliminar = document.querySelectorAll('.btn-eliminar-producto');
-      botonesEliminar.forEach(btn => {
-        btn.addEventListener('click', function () {
-          const id = this.dataset.id;
-          const card = this.closest('.producto-card');
-
-          Swal.fire({
-            title: '¿Eliminar este producto?',
-            text: 'Esta acción no se puede deshacer.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'No, volver',
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#6c757d'
-          }).then((result) => {
-            if (!result.isConfirmed) return;
-
-            const formData = new FormData();
-            formData.append('producto_id', id);
-            formData.append('ajax', '1');
-
-            fetch('?url=productos/eliminar', {
-              method: 'POST',
-              body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-              if (data.success) {
-                if (card) {
-                  card.remove();
-                }
-                Swal.fire({
-                  icon: 'success',
-                  title: 'Eliminado',
-                  text: data.message || 'El producto fue eliminado.',
-                  confirmButtonColor: '#4b2e83'
-                });
-              } else {
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Error',
-                  text: data.message || 'No se pudo eliminar el producto.',
-                  confirmButtonColor: '#4b2e83'
-                });
-              }
-            })
-            .catch(() => {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ocurrió un problema al eliminar el producto.',
-                confirmButtonColor: '#4b2e83'
-              });
-            });
-          });
-        });
-      });
-
-      // Editar producto (admin)
-      const botonesEditar = document.querySelectorAll('.btn-editar-producto');
-      const modalEditar   = document.getElementById('modalEditarProducto');
-      if (modalEditar) {
-        const inputId          = document.getElementById('edit-id');
-        const inputNombre      = document.getElementById('edit-nombre');
-        const inputDescripcion = document.getElementById('edit-descripcion');
-        const inputPrecio      = document.getElementById('edit-precio');
-
-        const modalBs = new bootstrap.Modal(modalEditar);
-
-        botonesEditar.forEach(btn => {
-          btn.addEventListener('click', function () {
-            inputId.value          = this.dataset.id;
-            inputNombre.value      = this.dataset.nombre;
-            inputDescripcion.value = this.dataset.descripcion;
-            inputPrecio.value      = this.dataset.precio;
-
-            modalBs.show();
-          });
-        });
-      }
-    });
+    window.mensajeExitoProductos = <?php echo json_encode($mensaje_exito); ?>;
+    window.errorProductos        = <?php echo json_encode($error); ?>;
   </script>
+
+  <!-- JS específico de productos -->
+  <script src="public/js/productos.js"></script>
 
 </body>
 </html>

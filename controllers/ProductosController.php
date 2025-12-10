@@ -32,15 +32,11 @@ class ProductosController
         }
     }
 
-    /**
-     * Sube una imagen y devuelve la ruta relativa (uploads/productos/xxxxx.jpg)
-     * Si $imagenActual se pasa y no se sube nada nuevo, devuelve $imagenActual.
-     * Si hay error, devuelve false.
-     */
+  
     private function guardarImagen(string $campo, ?string $imagenActual = null)
     {
         if (!isset($_FILES[$campo]) || $_FILES[$campo]['error'] === UPLOAD_ERR_NO_FILE) {
-            // No se envió archivo -> mantener la actual (en editar) o null (en crear)
+            
             return $imagenActual;
         }
 
@@ -56,7 +52,7 @@ class ProductosController
             return false;
         }
 
-        // Carpeta física: /uploads/productos
+       
         $uploadDir = __DIR__ . '/../uploads/productos/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
@@ -71,7 +67,7 @@ class ProductosController
 
         $rutaRelativa = 'uploads/productos/' . $nuevoNombre;
 
-        // Si había una imagen anterior, la borramos
+      
         if ($imagenActual) {
             $rutaAnterior = __DIR__ . '/../' . $imagenActual;
             if (is_file($rutaAnterior)) {

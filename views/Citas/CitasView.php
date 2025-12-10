@@ -1,6 +1,9 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+
+$esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="Productos.php" style="color: #4b2e83;">Productos</a>
+            <a class="nav-link fw-semibold" href="index.php?url=productos/index" style="color: #4b2e83;">Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-semibold" href="Carrito.php" style="color: #4b2e83;">Carrito</a>
@@ -209,7 +212,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Rellenar servicio en el modal
+
     const modalCita = document.getElementById('modalCita');
     modalCita.addEventListener('show.bs.modal', function (event) {
       const button = event.relatedTarget;

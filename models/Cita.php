@@ -65,6 +65,33 @@ class Cita
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return array
+     */
+public function obtenerTodas()
+{
+    $sql = "SELECT
+                c.id,
+                c.usuario_id,
+                u.nombre AS nombre_usuario,
+                c.nombre_mascota,
+                c.telefono,
+                c.servicio,
+                c.fecha_cita,
+                c.hora_cita,
+                c.notas,
+                c.created_at
+            FROM citas c
+            LEFT JOIN usuarios u ON u.id = c.usuario_id
+            ORDER BY c.fecha_cita DESC, c.hora_cita DESC, c.id DESC";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
     public function horarioOcupado($fecha, $hora)
     {
         $sql = "SELECT COUNT(*) FROM citas
@@ -80,8 +107,22 @@ class Cita
         return $stmt->fetchColumn() > 0;
     }
 
-    public function eliminar($citaId, $usuarioId)
+    /**
+     * 
+     *
+     * @param int $citaId
+     * @param int|null $usuarioId
+     * @return bool
+     */
+    public function eliminar($citaId, $usuarioId = null)
     {
+        if ($usuarioId === null) {
+            $sql = "DELETE FROM citas
+                    WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute([':id' => $citaId]);
+        }
+
         $sql = "DELETE FROM citas
                 WHERE id = :id
                   AND usuario_id = :usuario_id";
@@ -93,4 +134,6 @@ class Cita
             ':usuario_id' => $usuarioId,
         ]);
     }
+
+   
 }

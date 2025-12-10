@@ -4,6 +4,13 @@ require_once __DIR__ . '/../models/Cita.php';
 
 class CitasController
 {
+    public function __construct()
+    {
+        // Asegurarnos de que la sesión esté iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
 
     public function index()
     {
@@ -14,7 +21,6 @@ class CitasController
 
         $citaModel = new Cita();
 
-       
         $mensaje_exito = null;
         $error = null;
         $lastServicio = null;
@@ -34,7 +40,6 @@ class CitasController
             $lastServicio = $data['servicio'];
             $errores = [];
 
-           
             if ($data['nombre_mascota'] === '') {
                 $errores[] = "El nombre de la mascota es obligatorio.";
             }
@@ -53,14 +58,12 @@ class CitasController
                 $errores[] = "Debe seleccionar fecha y hora.";
             }
 
-            
             if (empty($errores) &&
                 $citaModel->horarioOcupado($data['fecha_cita'], $data['hora_cita'])) {
 
                 $errores[] = "Ese horario ya está ocupado para ese día. Por favor elige otro.";
             }
 
-           
             if (empty($errores)) {
                 if ($citaModel->crear($data)) {
                     $mensaje_exito = "Cita agendada correctamente.";
@@ -75,7 +78,6 @@ class CitasController
         require_once __DIR__ . '/../views/citas/CitasView.php';
     }
 
-  
     public function misCitas()
     {
         if (!isset($_SESSION['user_id'])) {
@@ -84,15 +86,24 @@ class CitasController
         }
 
         $citaModel = new Cita();
-        $citasUsuario = $citaModel->obtenerPorUsuario($_SESSION['user_id']);
 
-   
         $mensaje_exito = null;
         $error = null;
 
+    
+        $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+
+        if ($esAdmin) {
+           
+            $citasAll = $citaModel->obtenerTodas();
+            
+        } else {
+            
+            $citasUsuario = $citaModel->obtenerPorUsuario($_SESSION['user_id']);
+        }
+
         require_once __DIR__ . '/../views/citas/MisCitasView.php';
     }
-
 
     public function cancelar()
     {
@@ -137,13 +148,19 @@ class CitasController
             exit();
         }
 
+        $esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+
         $citaModel = new Cita();
-        $ok = $citaModel->eliminar($citaId, $_SESSION['user_id']);
+
+    
+        $usuarioParaEliminar = $esAdmin ? null : $_SESSION['user_id'];
+
+        $ok = $citaModel->eliminar($citaId, $usuarioParaEliminar);
 
         if (isset($_POST['ajax'])) {
             header('Content-Type: application/json');
             echo json_encode([
-                'success' => $ok,
+                'success' => (bool)$ok,
                 'message' => $ok
                     ? 'La cita se canceló correctamente.'
                     : 'No se pudo cancelar la cita.',
@@ -155,4 +172,3 @@ class CitasController
         exit();
     }
 }
-

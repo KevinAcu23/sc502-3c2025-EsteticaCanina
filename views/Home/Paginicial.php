@@ -3,6 +3,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+$esAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -84,12 +87,14 @@ if (session_status() === PHP_SESSION_NONE) {
         <h1 class="fw-bold" style="color: #4b2e83;">¡Porque tu peludo merece lo mejor!</h1>
         <p class="lead mt-2" style="color: #503a76;">Baños, cortes y cuidados con amor 🐕✨</p>
 
-        <!-- Botón: va a la página para AGENDAR (citas/index) -->
+      <?php if (!$esAdmin): ?>
         <a href="?url=citas/index"
            class="btn fw-bold rounded-pill px-4 py-2 mt-3"
            style="background-color: #ffb6c1; color: #4b2e83;">
           Agendar Cita
         </a>
+  <?php endif; ?>
+
       </div>
     </div>
   </section>
